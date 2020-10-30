@@ -7,10 +7,10 @@ Input:
 Module takes two files (containing strings seperated with newline) as input.
 
 Output:
-1. Finds the occurances of each term in both files if it is more than one
-2. Finds the terms which are comman in both files
-3. Finds terms which are exclusively in file1 and not in file2
-4. Finds terms which are exclusively in file2 and not in file1
+1. Finds the occurances of each term in both the files if it is more than one
+2. Finds the terms which are common in both the files
+3. Finds terms which are exclusively in the file1 and not in the file2
+4. Finds terms which are exclusively in the file2 and not in the file1
 
 #### Steps to set-up the module
 1. Move to the project directory
