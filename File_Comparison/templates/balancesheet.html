@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+	{% endblock %}
+
+
+    {% block content %}
+
+
+<div class = 'container-fluid'>
+
+
+    <div class="col-md-12" >
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_ul }}
+
+
+
+            <button type="submit" class="btn btn-success"><b>Compare</b></button>
+        </form>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-success">
+        <div class="panel-heading">
+             <span class="panel-title" class="glyphicon glyphicon-download" aria-hidden="true">
+                <a href="/media/" download> Frequency</a> </span>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <table style="width:50%" border="">
+                    <tr>
+                   <th colspan="2" >{{file_1_name}}</th>
+                    </tr>
+                    <tr style="color:orange">
+                        <th>String</th>
+                        <th>Occurance</th>
+                    </tr>
+                {% for field, value in freq_file_1 %}
+                    <tr>
+                        <th>{{ field }}</th>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table style="width:50%" border="">
+                    <tr>
+                    <th colspan="2">{{file_2_name}}</th>
+                    </tr>
+                    <tr style="color:orange">
+                        <th>String</th>
+                        <th>Occurance</th>
+                    </tr>
+                {% for field, value in freq_file_2 %}
+                    <tr>
+                        <th>{{ field }}</th>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+
+                </table>
+            </div>
+
+
+        </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+             <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+            <span class="panel-title" class="glyphicon glyphicon-download" aria-hidden="true">
+                <a href="/media/" download> Common</a> </span>
+            {{similar_sent_length}}
+        </div>
+        <div class="panel-body" >
+            {% for sent in similar_sent %}
+
+                </br>{{sent}}
+
+
+            {% endfor %}
+
+        </div>
+        </div>
+    </div>
+
+    <div class="col-md-12" >
+        <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Only in {{file_1_name}}</h3>
+        {{data1_minus_data2_length}}
+        </div>
+        <div class="panel-body" >
+            {% for sent in data1_minus_data2 %}
+
+                </br>{{sent}}
+
+            {% endfor %}
+
+        </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Only in {{file_2_name}}</h3>
+        {{data2_minus_data1_length}}
+        </div>
+        <div class="panel-body" >
+            {% for sent in data2_minus_data1 %}
+
+           </br>{{sent}}
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+
+
+	{% endblock %}
